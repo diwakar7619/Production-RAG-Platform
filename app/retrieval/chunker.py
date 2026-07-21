@@ -1,6 +1,6 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-text_splitter = RecursiveCharacterTextSplitter(
+TEXT_SPLITTER = RecursiveCharacterTextSplitter(
     chunk_size=500,
     chunk_overlap=50,
     length_function=len,
@@ -9,4 +9,4 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 
 def chunk_document(text: str) -> list[str]:
-    return text_splitter.split_text(text)
+    return TEXT_SPLITTER.split_text(text)
