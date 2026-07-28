@@ -8,11 +8,11 @@ class SearchResult(TypedDict):
 
 
 def search(query_embedding: list[float], limit: int = 5) -> list[SearchResult]:
-    results = CLIENT.search(
+    results = CLIENT.query_points(
         collection_name=COLLECTION_NAME,
-        query_vector=query_embedding,
+        query=query_embedding,
         limit=limit,
-    )
+    ).points
 
     search_results: list[SearchResult] = []
 

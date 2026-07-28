@@ -5,9 +5,9 @@ COLLECTION_NAME = "documents"
 
 CLIENT = QdrantClient(path="./qdrant_data")
 
-if not CLIENT.collection_exists("documents"):
+if not CLIENT.collection_exists(COLLECTION_NAME):
     CLIENT.create_collection(
-        collection_name="documents",
+        collection_name=COLLECTION_NAME,
         vectors_config=models.VectorParams(
             size=384,
             distance=models.Distance.COSINE,
@@ -25,6 +25,6 @@ def store_embeddings(chunks: list[str], embeddings):
         points.append(point)
 
     CLIENT.upsert(
-        collection_name="documents",
+        collection_name=COLLECTION_NAME,
         points=points,
     )
