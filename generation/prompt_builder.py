@@ -9,7 +9,7 @@ If the answer isn't present, say you don't know.
 
 
 def build_messages(question: str, search_results: list[SearchResult]):
-    context = [result.text for result in search_results]
+    context = [result["text"] for result in search_results]
 
     context_text = "\n\n".join(context)
 
